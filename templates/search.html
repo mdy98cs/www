@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+<body>
+
+<h1>Search upcoming flights by city, airport, or date</h1>
+
+<form action="/searchFlights/city" method="POST">
+	
+	Search by city (arrival or departure)</br>
+	<input type="text" name = "citysearchbox" placeholder="search by city" required/> </br>
+	<input type="submit" value = Search />
+
+</form>
+
+<form action="/searchFlights/airport" method="POST">
+
+        Search by airport (arrival or departure)</br>
+	<input type="text" name = "airportsearchbox" placeholder="search by airport" required/> </br>
+	<input type="submit" value = Search />
+
+</form>
+
+<form action="/searchFlights/date" method="POST">
+
+    Search by date (arrival or departure)</br>
+    Starting Time: 
+    <input type="datetime-local" name="begintime" step=1 required/> </br>
+    Ending Time:
+    <input type="datetime-local" name="endtime" step=1 required/> </br>
+    <input type="submit" value = Search />
+
+</form>
+
+{% if error %}
+	<p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+<a href="/">Go back</a>
+
+</body>
+</html>

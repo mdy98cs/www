@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<style type="text/css" media="screen">
+  table, th, td{
+    border: 1px solid black;
+  }
+</style>
+
+<body>
+<div>
+  <h1>Welcome {{username}}</h1>
+</div>
+<div>
+  <h3>My Upcoming Flight(s)</h3>
+  <table>
+    <th>Ticket ID</th>
+    <th>Flight</th>
+    <th>Departure Airport</th>
+    <th>Departure Time</th>
+    <th>Arrival Airport</th>
+    <th>Arrival Time</th>
+    {% for line in posts %}
+    <tr>
+      <td>{{line.ticket_id}}</td>
+      <td>{{line.airline_name}} {{line.flight_num}}</td>
+      <td>{{line.departure_airport}}</td>
+      <td>{{line.departure_time}}</td>
+      <td>{{line.arrival_airport}}</td>
+      <td>{{line.arrival_time}}</td>
+    </tr>
+    {% endfor %}
+  </table>  
+</div>
+<div>
+  <h3><a href="/purchasePageCustomer">Purchase</a></h3>
+</div>
+<div>
+  <h3><a href="/searchPageCustomer">Search from All Flights</a></h3>
+</div>    
+
+<a href="/logout">Logout</a>
+
+</body>
+
+</html>

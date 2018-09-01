@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>purchaseCustomer</title>
+</head>
+
+<style type="text/css" media="screen">
+  table, th, td{
+    border: 1px solid black;
+  }
+</style>
+
+<body>
+<h1>Purchase</h1>
+<h3>1. Where are you going? </h3>
+<form action="/searchPurchaseCustomer" method="POST">
+  From <br>
+  <input type="text" name = "fromcity" placeholder="city" required>
+  <input type="text" name = "fromairport" placeholder="airport" required>
+  <input type="date" name = "fromdate" placeholder="date" required> <br><br>
+  To <br>
+  <input type="text" name = "tocity" placeholder="city" required>
+  <input type="text" name = "toairport" placeholder="airport" required>
+  <input type="date" name = "todate" placeholder="date" required> <br><br>
+  <input type="submit" value = Search />
+</form>
+
+<h3>2. These are the flights available based on your chosen options</h3>
+<table>
+  <th>Airline Name</th>
+  <th>Flight Number</th>
+  <th>Departure Airport</th>
+  <th>Departure Time</th>
+  <th>Arrival Airport</th>
+  <th>Arrival Time</th>
+  <th>Price</th>
+  <th>Airplane ID</th>
+  
+{% for line in results %}
+  <tr>
+    <td>{{line.airline_name}}</td>
+    <td>{{line.flight_num}}</td>
+    <td>{{line.departure_airport}}</td>
+    <td>{{line.departure_time}}</td>
+    <td>{{line.arrival_airport}}</td>
+    <td>{{line.arrival_time}}</td>
+    <td>{{line.price}}</td>
+    <td>{{line.airplane_id}}</td>
+  </tr>
+{% endfor %}
+</table>
+
+{% if searchError %}
+  <p class="error"><strong>Error:</strong> {{searchError}}</p>
+{% endif %}
+<br>
+
+<h3>3. Choose your flight</h3>
+<form action="/purchaseCustomer" method="POST">
+  Airline Name <br><input type="text" name = "airline_name" placeholder="airline_name" required><br><br>
+  Flight Number <br><input type="text" name = "flight_num" placeholder="flight_num" required> <br><br>
+  <input type="submit" value = Purchase />
+</form> <br><br>
+{% if purchaseError %}
+  <p class="error"><strong>Error:</strong> {{purchaseError}}</p>
+{% endif %}
+
+<a href="/customerHome">Go back to my homepage</a>
+
+</body>
+
+</html>

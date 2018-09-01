@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>index</title>
+</head>
+
+<body>
+<div>
+  <img src="{{url_for('static', filename='bg.jpg')}}" alt="bg" width="1520" height="350">
+  <h1>Airline Booking System</h1>
+</div>
+<div>
+  <a href="/search">Search Upcoming Flights</a></br>
+  <a href="/login">Login</a> </br>
+  <a href="/registerCustomer">New Customer</a> </br>
+  <a href="/registerAgent">New Agent</a> </br>
+  <a href="/registerStaff">New Staff</a>
+</div>
+
+{% if error %}
+	<p class="error"><strong>Error:</strong> {{error}}</p>
+{% endif %}
+
+</body>
+
+</html>
